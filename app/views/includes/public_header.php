@@ -5,7 +5,7 @@
         My Online Store
     </title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link href="../../../resources/css/style.css" media="all" rel="stylesheet" type="text/css">
+    <link href=<?php echo STYLE_PATH;?>style.css media="all" rel="stylesheet" type="text/css">
 </head>
 <body class="">
     <div id="wrapper">
@@ -16,7 +16,7 @@
         <h1>
             <?php echo SITE_NAME?>
         </h1>
-        <u1 class="nav">
+        <ul class="nav">
             <li class="active"><a href="#">All items</a></li>
             <li class="active"><a href="#">Category 1</a></li>
-        </u1>
+        </ul>

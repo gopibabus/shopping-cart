@@ -18,3 +18,4 @@ ini_set('display_errors', 1);
 define('SITE_NAME', 'My Online Store');
 define('SITE_PATH', 'http://localhost:8888/projectPaypal/');
 define('IMAGE_PATH','http://localhost:8888/projectPaypal/resources/images/');
+define('STYLE_PATH','http://localhost:8888/projectPaypal/resources/css/');
