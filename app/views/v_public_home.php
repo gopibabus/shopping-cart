@@ -4,6 +4,12 @@
     <h2>
         All Products
     </h2>
+    <ul>
+        <?php $this->getAlerts(); ?>
+    </ul>
+    <p>
+        <?php $this->getData('header'); ?>
+    </p>
     <ul class="products">
         <li>
             <a href="#" ><img src="<?php echo IMAGE_PATH;?>product_beachtoys.jpg" alt="Beach Toys"><br>

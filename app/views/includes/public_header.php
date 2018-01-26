@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>
-        My Online Store
+        <?php $this->getData('pageTitle'); ?>
     </title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href=<?php echo STYLE_PATH;?>style.css media="all" rel="stylesheet" type="text/css">
@@ -17,6 +17,5 @@
             <?php echo SITE_NAME?>
         </h1>
         <ul class="nav">
-            <li class="active"><a href="#">All items</a></li>
-            <li class="active"><a href="#">Category 1</a></li>
+            <?php $this->getData('pageNav'); ?>
         </ul>
