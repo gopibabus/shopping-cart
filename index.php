@@ -2,9 +2,15 @@
 
 include('app/init.php');
 
-$category_nav = $Categories->createCategoryNav('home');
+$categoryNav = $Categories->createCategoryNav('home');
 
-$Template->setData('pageNav', $category_nav);
+$Template->setData('pageNav', $categoryNav);
+
+//get  products
+
+$products = $Products->createProductTable();
+$Template->setData('products', $products);
+
 
 $Template->load('app/views/v_public_home.php', 'Welcome!');
 //$Template->redirect('http://www.google.com');

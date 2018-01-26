@@ -23,11 +23,13 @@ define('STYLE_PATH','http://localhost:8888/projectPaypal/resources/css/');
 //Include objects
 include('models/m_template.php');
 include('models/m_categories.php');
+include('models/m_products.php');
 
 
 //Create Objects
 $Template = new Template();
 $Categories = new Categories();
+$Products = new Products();
 
 
 
