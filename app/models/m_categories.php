@@ -74,14 +74,14 @@ class Categories
 
         $data = '<li ';
         if ($active == strtolower('home')) {
-            $data .= 'class="active"';
+            $data .= ' class="active"';
         }
         $data .= '> <a href="' . SITE_PATH . '">View All</a></li>';
 
         //loop through each category
         if (!empty($categories)) {
             foreach ($categories as $category) {
-                $data .= '<li';
+                $data .= '<li ';
                 if (strtolower($active) == strtolower($category['name'])) {
                     $data .= 'class="active"';
                 }

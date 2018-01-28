@@ -52,7 +52,7 @@ class Template
 
 
     /**
-     * Saves provided data for use by teh view later
+     * Saves provided data for use by the view later
      *
      * @param string $name
      * @param string $value

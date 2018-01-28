@@ -72,6 +72,33 @@ class Products
         return $data;
     }
 
+    /**
+     * Retrieve product information for all products in specific category
+     * @param int $id
+     * @return array
+     */
+    public function getInCategory($id)
+    {
+        $data = [];
+        if ($stmt = $this->Database->prepare("SELECT id, name, price, image FROM "
+            . $this->dbTable . " WHERE category_id = ? ORDER BY name")) {
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $stmt->store_result();
+            $stmt->bind_result($prod_id, $prod_name, $prod_price, $prod_image);
+            while ($stmt->fetch()) {
+                $data[] = [
+                    'id' => $prod_id,
+                    'name' => $prod_name,
+                    'price' => $prod_price,
+                    'image' => $prod_image
+                ];
+            }
+            $stmt->close();
+        }
+        return $data;
+    }
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////*Create Page Elements*////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -87,20 +114,19 @@ class Products
         //get products
         if ($category != null) {
             //get products from specific category
+            $products = $this->getInCategory($category);
 
         } else {
             $products = $this->get();
         }
-
         $data = '';
-
         //loop through each product
         if (!empty($products)) {
             $i = 1;
             foreach ($products as $product) {
-                $data .= '<li';
+                $data .= '<li ';
                 if ($i == $cols) {
-                    $data .= ' class="last"';
+                    $data .= 'class="last"';
                     $i = 0;
                 }
                 $data .= '><a href="' . SITE_PATH . 'product.php?id=' . $product['id'] . '">';
@@ -114,4 +140,3 @@ class Products
         return $data;
     }
 }
-
