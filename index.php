@@ -2,6 +2,8 @@
 
 include('app/init.php');
 
+$Template->setData('pageClass', 'home');
+
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     //get products from specific category
     $category = $Categories->getCategories($_GET['id']);

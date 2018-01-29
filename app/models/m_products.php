@@ -52,7 +52,7 @@ class Products
 
                 if ($stmt->num_rows > 0) {
                     $data = ['id' => $prod_id, 'name' => $prod_name, 'description' => $prod_description,
-                        'price' => $prod_price, 'category_name' => $cat_name];
+                        'price' => $prod_price, 'image'=> $prod_image, 'category_name' => $cat_name];
                 }
                 $stmt->close();
             }
