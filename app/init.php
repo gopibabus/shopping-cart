@@ -24,10 +24,12 @@ define('STYLE_PATH','http://localhost/projectPaypal/resources/css/');
 include('models/m_template.php');
 include('models/m_categories.php');
 include('models/m_products.php');
+include('models/m_cart.php');
 
 //Create Objects
 $Template = new Template();
 $Categories = new Categories();
 $Products = new Products();
+$Cart = new Cart();
 
 session_start();

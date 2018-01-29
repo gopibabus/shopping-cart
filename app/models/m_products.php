@@ -31,6 +31,27 @@ class Products
         $data = [];
         if (is_array($id)) {
             //get products based on array of ids
+            $items = '';
+            foreach ($id as $item) {
+                if ($items != '') {
+                    $items .= ',';
+                }
+                $items .= $item;
+            }
+            if ($result = $this->Database->query("SELECT id, name, description, price, 
+                                                        image FROM $this->dbTable WHERE id IN ($items) ORDER BY name")) {
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_array()) {
+                        $data[] = [
+                            'id' => $row['id'],
+                            'name' => $row['name'],
+                            'description' => $row['description'],
+                            'price' => $row['price'],
+                            'image' => $row['image']
+                        ];
+                    }
+                }
+            }
         } else if ($id != null) {
             //get one specific product
             if ($stmt = $this->Database->prepare("SELECT 
@@ -52,7 +73,7 @@ class Products
 
                 if ($stmt->num_rows > 0) {
                     $data = ['id' => $prod_id, 'name' => $prod_name, 'description' => $prod_description,
-                        'price' => $prod_price, 'image'=> $prod_image, 'category_name' => $cat_name];
+                        'price' => $prod_price, 'image' => $prod_image, 'category_name' => $cat_name];
                 }
                 $stmt->close();
             }
@@ -99,6 +120,28 @@ class Products
         return $data;
     }
 
+    /**
+     * Check to ensure that product exists
+     * @param int $id
+     * @return bool
+     */
+    public function productExists($id)
+    {
+        if ($stmt = $this->Database->prepare("SELECT id FROM $this->dbTable WHERE id = ?")) {
+            $stmt->bind_param('i', $id);
+            $stmt->execute();
+            $stmt->store_result();
+            $stmt->bind_result($id);
+            $stmt->fetch();
+
+            if ($stmt->num_rows > 0) {
+                $stmt->close();
+                return true;
+            }
+            $stmt->close();
+            return false;
+        }
+    }
 ///////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////*Create Page Elements*////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////

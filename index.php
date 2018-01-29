@@ -29,6 +29,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     }
 } else {
     //get all products
+
+    //get category nav
     $categoryNav = $Categories->createCategoryNav('home');
     $Template->setData('pageNav', $categoryNav);
 

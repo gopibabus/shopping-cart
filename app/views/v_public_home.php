@@ -4,7 +4,7 @@
     <h2>
         All Products
     </h2>
-    <ul>
+    <ul class="alerts">
         <?php $this->getAlerts(); ?>
     </ul>
     <p>

@@ -1,14 +1,6 @@
-/*
+/*My Online Store Style sheets*/
 
-My Online Store Stylesheet
-
-*/
-
-/*
-
-Template Styles
-
-*/
+/*Template Styles*/
 
 body{
     margin: 0;
@@ -236,7 +228,7 @@ Page Specific Styles
         }
     .shoppingcart .buttons_row{
         position: relative;
-        top: -110px;
+        top: -60px;
     }
     .shoppingcart .submit_row{
         float:right;
