@@ -33,3 +33,7 @@ $Products = new Products();
 $Cart = new Cart();
 
 session_start();
+
+//global
+$Template->setData('cartTotalItems', $Cart->getTotalItems());
+$Template->setData('cartTotalCost', $Cart->getTotalCost());

@@ -38,7 +38,8 @@ class Products
                 }
                 $items .= $item;
             }
-            if ($result = $this->Database->query("SELECT id, name, description, price, 
+
+            if (!empty($items) && $result = $this->Database->query("SELECT id, name, description, price, 
                                                         image FROM $this->dbTable WHERE id IN ($items) ORDER BY name")) {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_array()) {
@@ -116,6 +117,39 @@ class Products
                 ];
             }
             $stmt->close();
+        }
+        return $data;
+    }
+
+    /**
+     * Return an array of price info for specified ids
+     *
+     * @param array $ids
+     * @return array
+     */
+    public function getPrices($ids)
+    {
+        $data = [];
+        //create comma separated list
+        $items = '';
+        foreach ($ids as $id){
+            if($items != ''){
+                $items .=',';
+            }
+            $items .= $id;
+        }
+
+        //get multiple product info based on list of ids
+        if($result = $this->Database->query("SELECT id, price FROM 
+            $this->dbTable WHERE id IN ($items) ORDER BY name")){
+            if($result->num_rows > 0){
+                while ($row = $result->fetch_array()){
+                    $data[] = [
+                        'id'=>$row['id'],
+                        'price'=>$row['price']
+                    ];
+                }
+            }
         }
         return $data;
     }

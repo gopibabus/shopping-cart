@@ -25,6 +25,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 if (isset($_GET['empty'])) {
     $Cart->emptyCart();
+    $Template->setData('cartTotalItems', 0);
+    $Template->setData('cartTotalCost', '0.00');
     $Template->setAlert('Shopping Cart Emptied!!');
     $Template->redirect(SITE_PATH . 'cart.php');
 
@@ -44,8 +46,11 @@ if(isset($_POST['update'])){
         }
     }
 
+    $Template->setData('cartTotalItems', $Cart->getTotalItems());
+    $Template->setData('cartTotalCost', $Cart->getTotalCost());
+
     //add alert
-    $Template->setAlert('Number of items in teh cart updated');
+    $Template->setAlert('Number of items in the cart updated');
 }
 //get items in the cart
 $display = $Cart->createCart();

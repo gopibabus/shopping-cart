@@ -107,6 +107,47 @@ class Cart
         unset($_SESSION['cart']);
     }
 
+    /**
+     * Return total number of items in the cart
+     * @return int
+     */
+    public function getTotalItems()
+    {
+        $num = 0;
+        if(isset($_SESSION['cart'])){
+            foreach ($_SESSION['cart'] as $item){
+                $num = $num +$item;
+            }
+        }
+        return $num;
+    }
+
+    /**
+     * Return total cost of all items in the cart
+     * @return int
+     */
+    public function getTotalCost(){
+        $num = '0.00';
+
+        if(isset($_SESSION['cart'])){
+            //if items to display
+
+            //get products ids
+            $ids = $this->getIds();
+
+            //get product prices
+            global $Products;
+            $prices = $Products->getPrices($ids);
+
+            //loop through, adding the cost of each item
+            // X the number of items in the cart to $num each time
+
+            foreach ($prices as $price) {
+                $num += doubleval($price['price'] * $_SESSION['cart'][$price['id']]);
+            }
+        }
+        return $num;
+    }
 ///////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////*Create Page Parts*////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////
