@@ -29,6 +29,24 @@ if (isset($_GET['empty'])) {
     $Template->redirect(SITE_PATH . 'cart.php');
 
 }
+
+if(isset($_POST['update'])){
+    //get all ids of products in cart
+
+    $ids = $Cart->getIds();
+
+    //make sure that we have ids to work with
+    if($ids != null){
+        foreach ($ids as $id){
+            if(is_numeric($_POST['product'.$id])){
+                $Cart->update($id, $_POST['product'.$id]);
+            }
+        }
+    }
+
+    //add alert
+    $Template->setAlert('Number of items in teh cart updated');
+}
 //get items in the cart
 $display = $Cart->createCart();
 $Template->setData('cartRows', $display);

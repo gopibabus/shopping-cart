@@ -81,6 +81,23 @@ class Cart
     }
 
     /**
+     * Update the quantity of specific item in the cart
+     *
+     * @param int $id
+     * @param int $num
+     * @return null
+     */
+    public function update($id, $num)
+    {
+        if ($num == 0) {
+            unset($_SESSION['cart'][$id]);
+
+        } else {
+            $_SESSION['cart'][$id] = $num;
+        }
+    }
+
+    /**
      * Empty all items from the cart
      *
      * @return null
@@ -124,10 +141,10 @@ class Cart
                 if ($line % 2 == 0) {
                     $data .= ' class="alt"';
                 }
-                $data .= '><div class="col1">' .$product['name'].'</div>';
-                $data .= '<div class="col2"><input name="product'.$product['id'].'" value="'.$_SESSION['cart'][$product['id']].'" ></div>';
-                $data .= '<div class="col3">$'.$product['price'].'</div>';
-                $data .= '<div class="col4">$'.$product['price'] * $_SESSION['cart'][$product['id']].'</div></li>';
+                $data .= '><div class="col1">' . $product['name'] . '</div>';
+                $data .= '<div class="col2"><input name="product' . $product['id'] . '" value="' . $_SESSION['cart'][$product['id']] . '" ></div>';
+                $data .= '<div class="col3">$' . $product['price'] . '</div>';
+                $data .= '<div class="col4">$' . $product['price'] * $_SESSION['cart'][$product['id']] . '</div></li>';
 
                 $total += $product['price'] * $_SESSION['cart'][$product['id']];
                 $line++;
@@ -136,12 +153,12 @@ class Cart
             //add subtotal row
             $data .= '<li class="subtotal_row">
                         <div class="col1">SubTotal:</div>
-                        <div class="col2">$'.$total.'</div>
+                        <div class="col2">$' . $total . '</div>
                         </li>';
             //add total row
             $data .= '<li class="total_row">
                         <div class="col1">Total:</div>
-                        <div class="col2">$'.$total.'</div>
+                        <div class="col2">$' . $total . '</div>
                         </li>';
         } else {
             //no products to display
