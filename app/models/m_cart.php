@@ -196,6 +196,13 @@ class Cart
                         <div class="col1">SubTotal:</div>
                         <div class="col2">$' . $total . '</div>
                         </li>';
+
+            //taxes
+            if(SHOP_TAX > 0){
+                $data .= '<li class="taxes_row"><div class="col1"> Tax('.(SHOP_TAX * 100).'%)</div>
+                            <div class="col2">$'.number_format(SHOP_TAX * $total, 2).'</div></li>';
+            }
+
             //add total row
             $data .= '<li class="total_row">
                         <div class="col1">Total:</div>
@@ -210,6 +217,14 @@ class Cart
                         <div class="col1">SubTotal:</div>
                         <div class="col2">$0.00:</div>
                         </li>';
+
+            //taxes
+            if(SHOP_TAX > 0){
+                $data .= '<li class="taxes_row"><div class="col1"> Tax('.(SHOP_TAX * 100).'%)</div>
+                            <div class="col2">$0.00</div></li>';
+            }
+
+
             //add total row
             $data .= '<li class="total_row">
                         <div class="col1">Total:</div>

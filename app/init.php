@@ -16,9 +16,11 @@ ini_set('display_errors', 1);
 
 //set up constants
 define('SITE_NAME', 'My Online Store');
-define('SITE_PATH', 'http://localhost/projectPaypal/');
-define('IMAGE_PATH','http://localhost/projectPaypal/resources/images/');
-define('STYLE_PATH','http://localhost/projectPaypal/resources/css/');
+define('SITE_PATH', 'http://localhost:80/projectPaypal/');
+define('IMAGE_PATH','http://localhost:80/projectPaypal/resources/images/');
+define('STYLE_PATH','http://localhost:80/projectPaypal/resources/css/');
+
+define('SHOP_TAX', '0.0875');
 
 //Include objects
 include('models/m_template.php');
