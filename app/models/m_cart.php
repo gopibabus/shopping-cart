@@ -200,7 +200,8 @@ class Cart
             //taxes
             if(SHOP_TAX > 0){
                 $data .= '<li class="taxes_row"><div class="col1"> Tax('.(SHOP_TAX * 100).'%)</div>
-                            <div class="col2">$'.number_format(SHOP_TAX * $total, 2).'</div></li>';
+                            <div class="col2">$'.number_format(SHOP_TAX * $total, 2).
+                            '</div></li>';
             }
 
             //add total row
