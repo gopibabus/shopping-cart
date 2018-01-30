@@ -2,6 +2,8 @@
 `This project will explain how to build shopping cart and integrate PayPal payment gateway
 in to our website`
 
+![alt text](https://raw.githubusercontent.com/srungavarapu/projectPaypal/master/shoppingCart.png)
+
 ``Steps to run this project on your local Environment``
 
 1. Install MAMP/WAMP
