@@ -24,17 +24,21 @@ http://codeigniter.com/user_guide/general/styleguide.html
 MYSQLI PREPARED STATEMENTS: "IN"
 http://php.net/manual/en/mysqli-stmt.bind-param.php
 
-PAYPAL
+PayPal:
 http://developer.paypal.com
-https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&content_ID=developer/e_howto_html_Appx_websitestandard_htmlvariables
-https://www.paypal.com/cgi-bin/webscr?cmd=_pdn_xclick_techview_outside (PDF below linked from here)
-https://cms.paypal.com/cms_content/US/en_US/files/developer/PP_WebsitePaymentsStandard_IntegrationGuide.pdf (p 407)
 https://www.sandbox.paypal.com/us/cgi-bin/webscr?cmd=_web-tools
 
 IPN:
 https://www.paypal.com/ipn/
-https://cms.paypal.com/cgi-bin/marketingweb?cmd=_render-content&content_ID=developer/e_howto_admin_IPNIntro
-https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&content_ID=developer/e_howto_html_IPNandPDTVariables
-https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&content_ID=developer/e_howto_admin_IPNTesting
-https://www.x.com/developers/PayPal/documentation-tools/code-sample/216623
-http://www.micahcarrick.com/paypal-ipn-with-php.html
+
+//sample code to build m_payments.php -> getApiContext
+https://raw.githubusercontent.com/paypal/PayPal-PHP-SDK/master/sample/bootstrap.php
+
+//sample code used to m_payments -> createPayment
+https://raw.githubusercontent.com/paypal/PayPal-PHP-SDK/master/sample/payments/CreatePaymentUsingPayPal.php
+
+//sample code used to m_payments -> executePayment
+https://raw.githubusercontent.com/paypal/PayPal-PHP-SDK/master/sample/payments/ExecutePayment.php
+
+//PayPal SDK for PHP
+https://github.com/paypal/PayPal-PHP-SDK

@@ -5,7 +5,7 @@
         <h2><?php $this->getData('prodName'); ?></h2>
         <div class="price"><?php $this->getData('prodPrice'); ?></div>
         <div class="description"><?php $this->getData('prodDescription'); ?></div>
-        <a href="cart?add=<?php $this->getData('prodId'); ?>" class="button"> Add to Cart</a>
+        <a href="cart.php?add=<?php $this->getData('prodId'); ?>" class="button"> Add to Cart</a>
     </div>
 
 <?php include('includes/public_footer.php'); ?>

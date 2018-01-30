@@ -22,6 +22,15 @@ define('STYLE_PATH','http://localhost:80/projectPaypal/resources/css/');
 
 define('SHOP_TAX', '0.0875');
 
+//either sandbox or live paypal credentials
+define('PAYPAL_MODE','sandbox');
+define('PAYPAL_CURRENCY','USD');
+define('PAYPAL_DEVID','AUky_VpfRlsYmeFwtattTzTq8ncgix0cDjlMxqw0yK74prBzaWeQa8H79F9Nb-K5LIwkOB7m8WpR2wo_');
+define('PAYPAL_DEVSECRET','EDeujIBkQjcP80oI3Zzz6AZxp3XD1tPRXzIGYl0slVBxxCqYOFKWbdepA8n7EtKbAp9KNSUGZPkgx1IU');
+define('PAYPAL_LIVEID','');
+define('PAYPAL_LIVESECRET','');
+
+
 //Include objects
 include('models/m_template.php');
 include('models/m_categories.php');

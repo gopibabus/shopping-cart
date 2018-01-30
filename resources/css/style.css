@@ -228,7 +228,7 @@ Page Specific Styles
         }
     .shoppingcart .buttons_row{
         position: relative;
-        top: -60px;
+        top: -101px;
     }
     .shoppingcart .submit_row{
         float:right;
@@ -245,6 +245,11 @@ Page Specific Styles
         padding: 10px;
         border-right: 1px solid #afd4a6;
         background: #ceecc7;
+    }
+    .alerts li.error{
+        padding: 10px;
+        border-right: 1px solid red;
+        background: #fbf1f1;
     }
 
 

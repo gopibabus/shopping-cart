@@ -91,7 +91,9 @@ class Cart
     {
         if ($num == 0) {
             unset($_SESSION['cart'][$id]);
-
+            if(empty($_SESSION['cart'])){
+                unset($_SESSION['cart']);
+            }
         } else {
             $_SESSION['cart'][$id] = $num;
         }
@@ -114,9 +116,9 @@ class Cart
     public function getTotalItems()
     {
         $num = 0;
-        if(isset($_SESSION['cart'])){
-            foreach ($_SESSION['cart'] as $item){
-                $num = $num +$item;
+        if (isset($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $item) {
+                $num = $num + $item;
             }
         }
         return $num;
@@ -126,10 +128,11 @@ class Cart
      * Return total cost of all items in the cart
      * @return int
      */
-    public function getTotalCost(){
+    public function getTotalCost()
+    {
         $num = '0.00';
 
-        if(isset($_SESSION['cart'])){
+        if (isset($_SESSION['cart'])) {
             //if items to display
 
             //get products ids
@@ -147,6 +150,25 @@ class Cart
             }
         }
         return $num;
+    }
+
+    /**
+     * Return shipping cost based on cost of items
+     * @param double $total
+     * @return double
+     */
+    public function getShippingCost($total)
+    {
+        if ($total > 200) {
+            return 40.00;
+        } else if ($total > 50) {
+            return 15.00;
+        } else if ($total > 10) {
+            return 4.00;
+        } else {
+            return 2.00;
+        }
+
     }
 ///////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////*Create Page Parts*////////////////////////////////////////
@@ -176,6 +198,7 @@ class Cart
         if ($products != '') {
             //products to display
             $line = 1;
+            $shipping = 0;
             foreach ($products as $product) {
                 //create new item in the cart
                 $data .= '<li ';
@@ -187,6 +210,7 @@ class Cart
                 $data .= '<div class="col3">$' . $product['price'] . '</div>';
                 $data .= '<div class="col4">$' . $product['price'] * $_SESSION['cart'][$product['id']] . '</div></li>';
 
+                $shipping += ($this->getShippingCost($product['price'] * $_SESSION['cart'][$product['id']]));
                 $total += $product['price'] * $_SESSION['cart'][$product['id']];
                 $line++;
 
@@ -197,17 +221,25 @@ class Cart
                         <div class="col2">$' . $total . '</div>
                         </li>';
 
+            //shipping
+            $shippingCost = number_format($shipping, 2);
+            $data .= '<li class="shipping_row"><div class="col1">Shipping Cost:</div>
+                            <div class="col2">$' . $shippingCost .
+                '</div></li>';
+
             //taxes
-            if(SHOP_TAX > 0){
-                $data .= '<li class="taxes_row"><div class="col1"> Tax('.(SHOP_TAX * 100).'%)</div>
-                            <div class="col2">$'.number_format(SHOP_TAX * $total, 2).
-                            '</div></li>';
+            $taxes = number_format(SHOP_TAX * $total, 2);
+            if (SHOP_TAX > 0) {
+                $data .= '<li class="taxes_row"><div class="col1"> Tax(' . (SHOP_TAX * 100) . '%)</div>
+                            <div class="col2">$' . $taxes .
+                    '</div></li>';
             }
 
             //add total row
+            $totalCost = number_format($total + $taxes + $shippingCost, 2);
             $data .= '<li class="total_row">
                         <div class="col1">Total:</div>
-                        <div class="col2">$' . $total . '</div>
+                        <div class="col2">$' . ($totalCost) . '</div>
                         </li>';
         } else {
             //no products to display
@@ -219,9 +251,13 @@ class Cart
                         <div class="col2">$0.00:</div>
                         </li>';
 
+            //shipping
+            $data .= '<li class="shipping_row"><div class="col1">Shipping Cost:</div>
+                            <div class="col2">$0.00</div></li>';
+
             //taxes
-            if(SHOP_TAX > 0){
-                $data .= '<li class="taxes_row"><div class="col1"> Tax('.(SHOP_TAX * 100).'%)</div>
+            if (SHOP_TAX > 0) {
+                $data .= '<li class="taxes_row"><div class="col1"> Tax(' . (SHOP_TAX * 100) . '%)</div>
                             <div class="col2">$0.00</div></li>';
             }
 

@@ -48,7 +48,8 @@ class Products
                             'name' => $row['name'],
                             'description' => $row['description'],
                             'price' => $row['price'],
-                            'image' => $row['image']
+                            'image' => $row['image'],
+                            'quantity'=>$_SESSION['cart'][$row['id']]
                         ];
                     }
                 }
