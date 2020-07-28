@@ -1,9 +1,6 @@
 # projectPaypal
 
-`This project will explain how to build shopping cart and integrate PayPal payment gateway
-in to our website`
-
-![alt text](https://raw.githubusercontent.com/srungavarapu/projectPaypal/master/shoppingCart.png)
+`Shopping cart and integrate PayPal payment gateway in to a website`
 
 ``Steps to run this project on your local Environment``
 
