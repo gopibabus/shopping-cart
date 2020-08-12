@@ -10,4 +10,4 @@
 4. Import file called ks_shop.sql in to your database server.
    So that it will create database called ks_shop in your local instance.
 5. Make sure that your server running on port 80
-6. You all set, visit http://localhost/projectPaypal
+6. You all set, visit http://localhost/shopping-cart
